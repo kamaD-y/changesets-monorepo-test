@@ -38,7 +38,15 @@ $ npx changeset
 5. PRレビューを行います
 6. リリースを行うまでにその他開発する機能がある場合は、引き続き開発を行います(1へ)
 7. 開発を終え、リリースを行います
-8. リリース後、蓄積されたchangesetファイルをもとにCHANGELOGを作成・更新します
+8. リリース後、開発環境で蓄積されたchangesetファイルをもとにCHANGELOGを作成・更新します
 ```sh
-$ npx changeset version
+$ git checkout main
+$ git pull origin main
+$ git checkout -b docs/usecase1
+$ cd usecases/usecase1
+$ GITHUB_TOKEN="<GITHUB_TOKEN>" npx changeset version
+# PRへのリンクを含んだCHANGELOGが作成・更新されます
+# access tokenには、`repo:status`, `read:user`の権限が必要とDocには記載されていますが、repo全てを許可しないとエラーになるようです(2024/10/03時点)
+# https://github.com/changesets/changesets/issues/795
 ```
+9. 更新したCHANGELOG, 削除されたchangesetファイルをcommitしリモートのpushします
