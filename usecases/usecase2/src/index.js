@@ -1,1 +1,1 @@
-console.log("usecase2")
+console.log("usecase2");
